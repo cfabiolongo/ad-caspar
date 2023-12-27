@@ -12,7 +12,7 @@ chatbot prototype implementing Question Answering tecniques for Polar and Wh-Que
 # Installation
 
 
-This repository has been tested on Pycharm 2019.1.2 x64 with the following packages versions:
+This repository has been tested with the following packages versions:
 
 * [Phidias](https://github.com/corradosantoro/phidias) (release 1.3.4.alpha) 
 * SpaCy (ver. 2.2.4)
