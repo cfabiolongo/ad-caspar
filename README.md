@@ -75,6 +75,11 @@ from python console:
 > python -m pip install python-telegram-bot
 ```
 
+### MongoDB
+```sh
+> python -m pip install pymongo
+```
+
 ### MongoDB (Docker use case)
 
 ---------------
@@ -82,11 +87,6 @@ In the case of using a mongoDB container, the latter can be accessed by the link
 
 ```sh
 > docker-compose -f mongo.yaml up
-```
-
-### pymongo
-```sh
-> python -m pip install pymongo
 ```
 
 # Testing
