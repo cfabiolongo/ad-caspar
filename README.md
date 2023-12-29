@@ -75,6 +75,7 @@ from python console:
 
 ### MongoDB (pymongo)
 
+---------------
 The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
 
 ```sh
