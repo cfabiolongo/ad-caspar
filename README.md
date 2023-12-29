@@ -75,7 +75,7 @@ from python console:
 > python -m pip install python-telegram-bot
 ```
 
-### MongoDB
+### MongoDB (pymongo)
 ```sh
 > python -m pip install pymongo
 ```
