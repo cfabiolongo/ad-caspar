@@ -21,8 +21,6 @@ This repository has been tested with the following packages versions:
 * python-telegram-bot (ver. 12.8)
 * pymongo (ver. 3.10.1)
 
-The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
-
 
 ### Phidias
 
@@ -76,6 +74,9 @@ from python console:
 ```
 
 ### MongoDB (pymongo)
+
+The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
+
 ```sh
 > python -m pip install pymongo
 ```
