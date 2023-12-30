@@ -1,8 +1,9 @@
 # AD-CASPAR
 
 This is the repository of the Python (3.7+) implementation of AD-CASPAR (Abductive-Deductive Cognitive Architecture System Planned and Reactive)
-referred to the paper [AD-CASPAR: Abductive-Deductive Cognitive Architecture based on Natural Language and First Order Logic Reasoning](http://ceur-ws.org/Vol-2735/), presented in 
+referred to the short paper [AD-CASPAR: Abductive-Deductive Cognitive Architecture based on Natural Language and First Order Logic Reasoning](http://ceur-ws.org/Vol-2735/), presented in 
 the 4th Workshop on Natural Language for Artificial Intelligence (NL4AI 2020) co-located with the 19th International Conference of the Italian Association for Artificial Intelligence (AI*IA 2020).
+A full paper of the work is also available in [Cognitive Systems Research](https://www.sciencedirect.com/science/article/abs/pii/S1389041723000359). 
 This architecture inherits all the features of his predecessor [CASPAR](https://github.com/fabiuslongo/pycaspar), extending them with a 
  two-level Clauses Knowledge Base, an abductive inference as pre-phase of deduction, and a Telegram
 chatbot prototype implementing Question Answering tecniques for Polar and Wh-Questions. Such chatbot can have both goal-oriented and conversational features.
@@ -12,15 +13,13 @@ chatbot prototype implementing Question Answering tecniques for Polar and Wh-Que
 # Installation
 
 
-This repository has been tested on Pycharm 2019.1.2 x64 with the following packages versions:
+This repository has been tested with the following packages versions:
 
 * [Phidias](https://github.com/corradosantoro/phidias) (release 1.3.4.alpha) 
 * SpaCy (ver. 2.2.4)
 * Natural Language Toolkit (ver. 3.5)
 * python-telegram-bot (ver. 12.8)
 * pymongo (ver. 3.10.1)
-
-The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
 
 
 ### Phidias
@@ -29,17 +28,16 @@ The address of a MongoDB server must be specified by changing the value of HOST 
 ##### on all platforms
 ```sh
 > git clone https://github.com/corradosantoro/phidias
-> python setup.py install
+> pip install -r requirements.txt
+> pip install .
 ```
 ##### additional package needed (Linux)
 ```sh
 > pip install readline
-> pip install parse
 ```
 ##### additional package needed (Windows)
 ```sh
 > python -m pip install pyreadline
-> python -m pip install parse
 ```
 
 ### SpaCy
@@ -75,6 +73,15 @@ from python console:
 > python -m pip install python-telegram-bot
 ```
 
+### MongoDB (pymongo)
+
+---------------
+The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
+
+```sh
+> python -m pip install pymongo
+```
+
 ### MongoDB (Docker use case)
 
 ---------------
@@ -82,11 +89,6 @@ In the case of using a mongoDB container, the latter can be accessed by the link
 
 ```sh
 > docker-compose -f mongo.yaml up
-```
-
-### pymongo
-```sh
-> python -m pip install pymongo
 ```
 
 # Testing
