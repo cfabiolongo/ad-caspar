@@ -8,7 +8,8 @@ class ManageLKB(object):
         self.host = host
         self.user = user
         self.password = password
-        self.client = pymongo.MongoClient(self.host, username=self.user, password=self.password)
+        uri = f'mongodb://{self.user}:{self.password}@{self.host}/ad-caspar'
+        self.client = pymongo.MongoClient(uri)
         self.reason_keys = []
         self.confidence = 0.0
 
