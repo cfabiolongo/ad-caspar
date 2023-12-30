@@ -16,10 +16,11 @@ chatbot prototype implementing Question Answering tecniques for Polar and Wh-Que
 This repository has been tested with the following packages versions:
 
 * [Phidias](https://github.com/corradosantoro/phidias) (release 1.3.4.alpha) 
-* SpaCy (ver. 2.2.4)
-* Natural Language Toolkit (ver. 3.5)
-* python-telegram-bot (ver. 12.8)
-* pymongo (ver. 3.10.1)
+* SpaCy (2.2.4)
+* Natural Language Toolkit (3.5)
+* python-telegram-bot (12.8)
+* pymongo (3.10.1)
+* flair (0.11.3)
 
 
 ### Phidias
@@ -73,6 +74,14 @@ from python console:
 > python -m pip install python-telegram-bot
 ```
 
+### Flair
+
+---------------
+
+```sh
+> pip install git+https://github.com/flairNLP/flair
+```
+
 ### MongoDB (pymongo)
 
 ---------------
@@ -80,6 +89,18 @@ The address of a MongoDB server must be specified by changing the value of HOST 
 
 ```sh
 > python -m pip install pymongo
+```
+
+Create mongodb user in the Mongo shell:
+```sh
+> use ad-caspar
+> db.createUser({
+  user: "root",
+  pwd: "example",
+  roles: [
+    { role: "readWrite", db: "ad-caspar" }
+  ]
+})
 ```
 
 ### MongoDB (Docker use case)
