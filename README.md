@@ -199,7 +199,8 @@ Barack Obama became the president of United States in 2009.
 ### Automatic knowledge learning
 
 This prototype gives the change to feed automatically the Clauses KB from file text, set with the parameter FILE_KB_NAME (AGENT section),
-by the means of the command *feed()* given in the phidias prompt. Three examples knowledge base of increasing size are available for testing purposes: *west25.txt*, *west104.txt*, *west303.txt* (inside kbs folder).
+by the means of the command *feed()* given in the phidias prompt. 
+Three examples knowledge base of increasing size are available for testing purposes: *west25.txt*, *west104.txt*, *west303.txt* (inside kbs folder). The command feed() must be executed after chatbot awakening with the word *hello* at startup.
 
 ```sh
 > feed()
