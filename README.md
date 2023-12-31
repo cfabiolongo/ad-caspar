@@ -91,7 +91,7 @@ The address of a MongoDB server must be specified by changing the value of HOST 
 > python -m pip install pymongo
 ```
 
-Create mongodb user in the Mongo shell:
+Create a db named *ad-caspar* with a collection *clauses* and a mongodb user in the Mongo shell as it follows:
 ```sh
 > use ad-caspar
 > db.createUser({
