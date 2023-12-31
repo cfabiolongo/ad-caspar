@@ -858,27 +858,31 @@ class reason(Action):
         candidates = []
         nested_result = False
 
+        # first attempt using Backward-chaining (it will returns False of substitutions)
         if bc_result is not False:
-            self.assert_belief(OUT("From HKB: True"))
+            self.assert_belief(OUT("From HKB (Backward-Chaining): True"))
             self.assert_belief(OUT(str(bc_result)))
             self.assert_belief(ANSWERED("YES"))
+        else:
+            self.assert_belief(OUT("From HKB (Backward-Chaining): False"))
 
-
-        elif bc_result is False and NESTED_REASONING:
+        # Second attempt using Nested Reasoning (when Backward-chaining results is False)
+        if bc_result is False and NESTED_REASONING:
 
             print("\n\n ---- NESTED REASONING ---")
             nested_result = kb_fol.nested_ask(expr(q), candidates)
 
             if nested_result is False:
                 print("\nResult: ", nested_result)
-                self.assert_belief(OUT("From HKB: False"))
+                self.assert_belief(OUT("From HKB (Nested Reasoning): False"))
 
             else:
                 print("\nResult: ", nested_result)
-                self.assert_belief(OUT("From HKB: True"))
+                self.assert_belief(OUT("From HKB (Nested Reasoning): True"))
                 self.assert_belief(OUT(str(nested_result)))
                 self.assert_belief(ANSWERED("YES"))
 
+        # Third attempt using Low Knowledge base and previous reasoning are false
         if LKB_USAGE and bc_result is False and nested_result is False:
 
             print("\n\n ---- Backward-Chaining REASONING from Lower KB ---")
@@ -901,7 +905,7 @@ class reason(Action):
             candidates = []
 
             if bc_result is not False:
-                self.assert_belief(OUT("From LKB: True"))
+                self.assert_belief(OUT("From LKB (Backward-Chaining): True"))
                 self.assert_belief(OUT(str(bc_result)))
                 self.assert_belief(ANSWERED("YES"))
 
@@ -911,15 +915,15 @@ class reason(Action):
 
                 if nested_result is False:
                     print("\nResult: ", nested_result)
-                    self.assert_belief(OUT("From LKB: False"))
+                    self.assert_belief(OUT("From LKB (Nested Reasoning): False"))
 
                 else:
                     print("\nResult: ", nested_result)
-                    self.assert_belief(OUT("From LKB: True"))
+                    self.assert_belief(OUT("From LKB (Nested Reasoning): True"))
                     self.assert_belief(OUT(str(nested_result)))
                     self.assert_belief(ANSWERED("YES"))
             else:
-                self.assert_belief(OUT("From LKB: False"))
+                self.assert_belief(OUT("From LKB (Backward-Chaining): False"))
 
 
             reason_keys = lkbm.get_last_keys()
