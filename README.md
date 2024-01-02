@@ -21,6 +21,7 @@ This repository has been tested with the following packages versions:
 * python-telegram-bot (12.8)
 * pymongo (3.10.1)
 * flair (0.11.3)
+* pandas (2.1.4)
 
 
 ### Phidias
