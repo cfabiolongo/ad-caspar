@@ -22,10 +22,12 @@ dav = itertools.count(1)
 VERBOSE = config.getboolean('NL_TO_FOL', 'VERBOSE')
 LANGUAGE = config.get('NL_TO_FOL', 'LANGUAGE')
 ASSIGN_RULES_ADMITTED = config.getboolean('NL_TO_FOL', 'ASSIGN_RULES_ADMITTED')
+LEMMATIZATION = config.getboolean('NL_TO_FOL', 'LEMMATIZATION')
 
 WAIT_TIME = config.getint('AGENT', 'WAIT_TIME')
 LOG_ACTIVE = config.getboolean('AGENT', 'LOG_ACTIVE')
 FILE_KB_NAME = config.get('AGENT', 'FILE_KB_NAME')
+FILE_EXPORT_LKB_NAME = config.get('AGENT', 'FILE_EXPORT_LKB_NAME')
 
 INCLUDE_ACT_POS = config.getboolean('POS', 'INCLUDE_ACT_POS')
 INCLUDE_NOUNS_POS = config.getboolean('POS', 'INCLUDE_NOUNS_POS')
@@ -125,6 +127,10 @@ class clkb(Procedure): pass
 # auto feed procedure from file
 class feed(Procedure): pass
 class make_feed(Procedure): pass
+
+# export lkb in a file excel
+class expt(Procedure): pass
+
 
 # mode reactors
 class HOTWORD_DETECTED(Reactor): pass
@@ -891,9 +897,6 @@ class reason(Action):
 
             aggregated_clauses = lkbm.aggregate_clauses(q, [], MIN_CONFIDENCE)
             num_aggregated_clauses = len(aggregated_clauses)
-
-            if num_aggregated_clauses == 0:
-                self.assert_belief(OUT("I don't know!"))
 
             print("\nnumber asserted clauses: ", num_aggregated_clauses)
             for a in aggregated_clauses:
@@ -1697,7 +1700,7 @@ class parse_rules(Action):
 
         sent = str(arg).split("'")[3]
         print("\n", sent)
-        deps = parser.get_deps(sent, True)
+        deps = parser.get_deps(sent, LEMMATIZATION)
         print("\n", deps)
         parser.set_last_deps(deps)
 
@@ -1944,6 +1947,13 @@ class create_IMP_MST_ACT(Action):
 
 
 # ---------------------- AD-CASPAR exclusive
+
+
+
+class export_lkb(Action):
+    def execute(self):
+        count = lkbm.export_LKB()
+        print("\n", count, " clauses exported from Lower Knowledge Base")
 
 
 class show_lkb(Action):

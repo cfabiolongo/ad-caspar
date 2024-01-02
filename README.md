@@ -112,6 +112,15 @@ In the case of using a mongoDB container, the latter can be accessed by the link
 > docker-compose -f mongo.yaml up
 ```
 
+### Pandas (for clauses exporting from mongodb to excel)
+
+
+```sh
+> python -m pip install pandas
+> python -m pip install openpyxl
+```
+
+
 # Testing
 Before going any further it is first necessary to create a new telegram bot by following the instruction
  in this [page](https://core.telegram.org/bots#6-botfather).  The returned token must be put in TELEGRAM_TOKEN (AGENT Section) in config.ini. 
@@ -206,6 +215,14 @@ Three examples knowledge base of increasing size are available for testing purpo
 > feed()
 ```
 
+### Exporting clauses into excel
+
+This prototype gives the change to export Low Clauses KB content (clauses and corresponding sentences) into a excel file whose name must be
+set in FILE_EXPORT_LKB_NAME (AGENT section), with the command *expt()* given in the phidias prompt. 
+
+```sh
+> expt()
+```
 
 
 ### Querying the bot

@@ -1,5 +1,12 @@
 import pymongo
 from bson.objectid import ObjectId
+import configparser
+import pandas as pd
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+export_file = config.get('AGENT', 'FILE_EXPORT_LKB_NAME')
 
 
 class ManageLKB(object):
@@ -74,6 +81,23 @@ class ManageLKB(object):
                     def_chinks.append(chi)
         return def_chinks
 
+
+    def export_LKB(self):
+
+        db = self.client["ad-caspar"]
+        clauses = db["clauses"]
+
+        # Estrai i dati da MongoDB
+        cursor = clauses.find()
+        data = list(cursor)
+
+        # Crea un DataFrame pandas dai dati estratti
+        df = pd.DataFrame(data, columns=["value", "sentence"])
+
+        # Salva il DataFrame in un file Excel
+        df.to_excel(export_file, index=False)
+
+        return clauses.count_documents({})
 
 
     def show_LKB(self):

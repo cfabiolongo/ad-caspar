@@ -37,6 +37,9 @@ hkb() >> [show_fol_kb()]
 # show lower Clauses kb
 lkb() >> [show_lkb()]
 
+# show lower Clauses kb
+expt() >> [export_lkb()]
+
 # initialize Higher Clauses Kb
 chkb() >> [log_op(">>> Flushing High Clauses KB..."), clear_hkb()]
 # initialize Lower Clauses Kb
