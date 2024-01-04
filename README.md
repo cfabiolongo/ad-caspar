@@ -290,7 +290,7 @@ After a failed attempt using the High KB (From HKB: False), a successful reasoni
 
 It is well-known that natural language can be ambiguous, subject to interpretation about the semantic role of each lexical parts.
 For such a reason out-of-common sense utterance might lead to unexpected logical forms, due to the dataset the dependency parser has been trained on. Still, as reported [here](https://spacy.io/usage/facts-figures), the model used for dependency parsing has an accuracy of 95.1, which means that some missful/wrong dependecy classification is expected.
-Beyond that, the following are known issues relted to the code in this repository:
+Beyond that, the following are known issues related to the code in this repository:
 
 ---------------
 
