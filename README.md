@@ -48,7 +48,7 @@ This repository has been tested with the following packages versions:
 
 ```sh
 > python -m pip install spacy
-> python -m spacy download en_core_web_lg
+> python -m spacy download en_core_web_trf
 ```
 
 
@@ -285,3 +285,17 @@ Section [GEN]
 ![Image 9](https://github.com/fabiuslongo/ad-caspar/blob/master/images/nested4.JPG)
 
 After a failed attempt using the High KB (From HKB: False), a successful reasoning is achieved (From LKB: True) getting query-relevant clauses from the Low KB with a MIN_CONFIDENCE (Section [LKB] of config.ini) greater than 0.6.
+
+### Known issues
+
+It is well-known that natural language can be ambiguous, subject to interpretation about the semantic role of each lexical parts.
+For such a reason out-of-common sense utterance might lead to unexpected logical forms, due to the dataset the dependency parser has been trained on. Still, as reported [here](https://spacy.io/usage/facts-figures), the model used for dependency parsing has an accuracy of 95.1, which means that some missful/wrong dependecy classification is expected.
+Beyond that, the following are known issues relted to the code in this repository:
+
+---------------
+
+* Anaphora resolution/coreferentiators are not included yet in this code. So it is recommended to not use sentence containing pronoms, othewise any abductive/deductive operations cannot be successful.
+For this purpose, the integration of tools such as [neuralcoref](https://github.com/huggingface/neuralcoref) is planned. Coders might include such a tool in their own fork of thi repository.
+* Sentence containing singles quoation marks (') are still not well managed. So, it is recommented to not use it, and in such a case to rephrase utterances differently.
+* Occasional crashes during parsing of text, especially for conversion from natural language to logical forms/definite clauses. In thia case it is recommended rephrasing/reducing uttereances.
+* Sometime disambiguation might not works well, due to possible lack of useful examples within related wordnet synsets that must be evaluated for such a purpose. It is planned to integrate additional lexical resources in order to solce such a issue.

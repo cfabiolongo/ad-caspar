@@ -2,11 +2,13 @@ import pymongo
 from bson.objectid import ObjectId
 import configparser
 import pandas as pd
+import re
 
 config = configparser.ConfigParser()
 config.read('config.ini')
 
 export_file = config.get('AGENT', 'FILE_EXPORT_LKB_NAME')
+gnd_terms = config.getboolean('AGENT', 'FILE_EXPORT_GND_TERMS')
 
 
 class ManageLKB(object):
@@ -82,6 +84,10 @@ class ManageLKB(object):
         return def_chinks
 
 
+    # Funzione per rimuovere le sottostringhe del tipo (x1), (x2), ..., (xn)
+    def remove_substrings(self, text):
+        return re.sub(r'\(\w+\)', '', text)
+
     def export_LKB(self):
 
         db = self.client["ad-caspar"]
@@ -93,6 +99,10 @@ class ManageLKB(object):
 
         # Crea un DataFrame pandas dai dati estratti
         df = pd.DataFrame(data, columns=["value", "sentence"])
+
+        if gnd_terms:
+            # Applica la funzione alla colonna 'value'
+            df['value'] = df['value'].apply(self.remove_substrings)
 
         # Salva il DataFrame in un file Excel
         df.to_excel(export_file, index=False)
