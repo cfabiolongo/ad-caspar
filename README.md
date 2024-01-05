@@ -261,6 +261,7 @@ In order to test the _Nested Reasoning_ inherited from [CASPAR](https://github.c
 
 Section [NL_TO_FOL]:
 * ASSIGN_RULES_ADMITTED = true
+* CONDITIONAL_WORDS = WHEN
 
 Section [REASONING]
 * NESTED_REASONING = true
@@ -269,6 +270,9 @@ Section [GEN]
 * GEN_PREP = true
 * GEN_ADJ = true
 * GEN_ADV = true
+
+ASSIGN_RULES_ADMITTED ar used for creating logic implication starting from a copular verbs (*be*, present tense), while
+CONDITIONAL_WORDS (*when*, *if*, *while*, etc.) are those for what we want a logic implication will asserted.
 
 #### populating the knowledge base...
 

@@ -21,6 +21,7 @@ dav = itertools.count(1)
 
 VERBOSE = config.getboolean('NL_TO_FOL', 'VERBOSE')
 LANGUAGE = config.get('NL_TO_FOL', 'LANGUAGE')
+CONDITIONAL_WORDS = str(config.get('NL_TO_FOL', 'CONDITIONAL_WORDS')).split(", ")
 ASSIGN_RULES_ADMITTED = config.getboolean('NL_TO_FOL', 'ASSIGN_RULES_ADMITTED')
 LEMMATIZATION = config.getboolean('NL_TO_FOL', 'LEMMATIZATION')
 
@@ -1757,7 +1758,7 @@ class COND_WORD(ActiveBelief):
 
         word = str(x).split("'")[3]
         # Check for conditional word
-        if word.upper()[0:4] == "WHEN":
+        if word.upper()[0:4] in CONDITIONAL_WORDS:
             return True
         else:
             return False
