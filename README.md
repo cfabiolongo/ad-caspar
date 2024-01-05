@@ -272,7 +272,7 @@ Section [GEN]
 * GEN_ADV = true
 
 ASSIGN_RULES_ADMITTED ar used for creating logic implication starting from a copular verbs (*be*, present tense), while
-CONDITIONAL_WORDS (*when*, *if*, *while*, etc.) are those for what we want a logic implication will asserted.
+CONDITIONAL_WORDS (*when*, *if*, *while*, etc.) are those for what we want a logic implication will be asserted.
 
 #### populating the knowledge base...
 
