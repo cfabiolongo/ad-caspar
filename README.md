@@ -298,8 +298,8 @@ Beyond that, the following are known issues related to the code in this reposito
 
 ---------------
 
-* Anaphora resolution/coreferentiators are not included yet in this code. So it is recommended to not use sentence containing pronoms, othewise any abductive/deductive operations cannot be successful.
+* Anaphora resolution/coreferentiators are not included yet in this code. So it is recommended to not use sentence containing pronoms, otherwise any abductive/deductive operations cannot be successful.
 For this purpose, the integration of tools such as [neuralcoref](https://github.com/huggingface/neuralcoref) is planned. Coders might include such a tool in their own fork of this repository.
-* Sentence containing singles quoation marks (') are still not well managed. So, it is recommented to not use it, and in such a case to rephrase utterances differently.
-* Occasional crashes during parsing of text, especially for conversion from natural language to logical forms/definite clauses. In thia case it is recommended rephrasing/reducing uttereances.
-* Sometime disambiguation might not works well, due to possible lack of useful examples within related wordnet synsets that must be evaluated for such a purpose. It is planned to integrate additional lexical resources in order to solce such a issue.
+* Sentence containing singles quoation marks (') are still not well managed. So, it is recommended to not use it, and, in such a case, to rephrase utterances differently.
+* Occasional crashes during parsing of text may occur, especially during conversion from natural language into logical forms/definite clauses. In thia case it is recommended rephrasing/reducing utterances.
+* Sometime disambiguation might not work well, due to possible lack of useful examples within related wordnet synsets that must be evaluated for such a purpose. It is planned to integrate additional lexical resources in order to address such a issue.
