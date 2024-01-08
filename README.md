@@ -92,10 +92,9 @@ from python console:
 ### MongoDB
 
 ---------------
-* Install a new Mongodb instance, then create a new database named *ad-caspar* containing a collection *clauses*. The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
+* Install a new Mongodb community instance from [here](https://www.mongodb.com/try/download/community). A Compass GUI installation is also recommended from [here](https://www.mongodb.com/products/tools/compass), then create a new database named *ad-caspar* containing a collection *clauses* (the easier way is by using Compass). The url of the MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
 
-
-* Create a db named *ad-caspar* with a collection *clauses* and a mongodb user in the Mongo shell as it follows:
+* Create a new mongodb user in the Mongo shell (or Compass shell) as it follows:
 ```sh
 > use ad-caspar
 > db.createUser({
