@@ -120,6 +120,7 @@ class hkb(Procedure): pass
 class lkb(Procedure): pass
 class flush(Procedure): pass
 class manage_msg(Procedure): pass
+class proc(Procedure): pass
 
 # initialize Clauses Kbs
 class chkb(Procedure): pass
@@ -865,7 +866,7 @@ class reason(Action):
         candidates = []
         nested_result = False
 
-        # first attempt using Backward-chaining (it will returns False of substitutions)
+        # first attempt using Backward-chaining (it will return False of substitutions)
         if bc_result is not False:
             self.assert_belief(OUT("From HKB (Backward-Chaining): True"))
             self.assert_belief(OUT(str(bc_result)))
@@ -873,7 +874,7 @@ class reason(Action):
         else:
             self.assert_belief(OUT("From HKB (Backward-Chaining): False"))
 
-        # Second attempt using Nested Reasoning (when Backward-chaining results is False)
+        # Second attempt using Nested Reasoning (when Backward-chaining result is False)
         if bc_result is False and NESTED_REASONING:
 
             print("\n\n ---- NESTED REASONING ---")

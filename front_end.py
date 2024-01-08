@@ -47,18 +47,29 @@ clkb() >> [log_op(">>> Flushing Low Clauses KB..."), clear_lkb()]
 
 # chatbot wake word
 +message(C, "hello") / WAIT(W) >> [Reply(C, "Hello!"), +WAKE("ON"), +CHAT_ID(C), clear_hkb(), Timer(W).start()]
+# chatbot kbs utilities words
 +message(C, "forget") / WAIT(W) >> [Reply(C, "Okay, short term memory is gone..."), +WAKE("ON"), +CHAT_ID(C), clear_hkb(), Timer(W).start()]
 +message(C, "forget all") / WAIT(W) >> [Reply(C, "Okay, short and long term memory are gone..."), +WAKE("ON"), +CHAT_ID(C), clear_hkb(), clear_lkb(), Timer(W).start()]
 +message(C, X) / WAKE("ON") >> [reset_ct(), +CHAT_ID(C), +MSG(X), manage_msg(), Timer(W).start()]
 
-# Assertion management
+# Assertion management (chatbot)
 manage_msg() / (MSG(X) & CHAT_ID(C) & check_last_char(X, ".")) >> [Reply(C, "Got it."), -MSG(X), -REASON("ON"), +LISTEN("ON"), parse_rules(X), parse_deps(), feed_mst(), process_mst(), log_cmd("Feed", X), manage_msg()]
-# Questions management
+# Questions management (chatbot)
 manage_msg() / (MSG(X) & CHAT_ID(C) & check_last_char(X, "?")) >> [Reply(C, "Let me think..."), -MSG(X), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason(), manage_msg()]
-# Domotic command management
+# Domotic command management (chatbot)
 manage_msg() / (MSG(X) & CHAT_ID(C)) >> [Reply(C, "Domotic command detected"), -MSG(X), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X), manage_msg()]
-# Ending operation
+# Ending operation (chatbot)
 manage_msg() >> [show_ct(), show_line("\n------------- End of operations.\n"), Timer(W).start()]
+
+
+# Assertion management (shell)
+proc(X) / check_last_char(X, ".") >> [show_line("\nGot it."), -REASON("ON"), +LISTEN("ON"), parse_rules(X), parse_deps(), feed_mst(), process_mst(), log_cmd("Feed", X)]
+# Questions management (shell)
+proc(X) / check_last_char(X, "?") >> [show_line("\nLet me think..."), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason()]
+# Domotic command management (shell)
+proc(X) >> [show_line("\nDomotic command detected"), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X)]
+# Ending operation (shell)
+proc(X) >> [show_ct(), show_line("\n------------- End of operations.\n")]
 
 
 # Give back X as chatbot answer

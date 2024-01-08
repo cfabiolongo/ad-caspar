@@ -6,7 +6,6 @@ from utils import (
 
 import itertools
 import copy
-import configparser
 from lkb_manager import *
 
 # ______________________________________________________________________________
