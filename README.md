@@ -83,16 +83,19 @@ from python console:
 > pip install git+https://github.com/flairNLP/flair
 ```
 
-### MongoDB (pymongo)
-
----------------
-The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
+### pymongo
 
 ```sh
 > python -m pip install pymongo
 ```
 
-Create a db named *ad-caspar* with a collection *clauses* and a mongodb user in the Mongo shell as it follows:
+### MongoDB
+
+---------------
+* Install a Mongodb instance, then create a new database named *ad-caspar* containing a collection *clauses*. The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
+
+
+* Create a db named *ad-caspar* with a collection *clauses* and a mongodb user in the Mongo shell as it follows:
 ```sh
 > use ad-caspar
 > db.createUser({
@@ -103,6 +106,7 @@ Create a db named *ad-caspar* with a collection *clauses* and a mongodb user in 
   ]
 })
 ```
+
 
 ### MongoDB (Docker use case)
 
