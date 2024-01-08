@@ -92,7 +92,7 @@ from python console:
 ### MongoDB
 
 ---------------
-* Install a Mongodb instance, then create a new database named *ad-caspar* containing a collection *clauses*. The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
+* Install a new Mongodb instance, then create a new database named *ad-caspar* containing a collection *clauses*. The address of a MongoDB server must be specified by changing the value of HOST (section LKB) in config.ini.
 
 
 * Create a db named *ad-caspar* with a collection *clauses* and a mongodb user in the Mongo shell as it follows:
@@ -302,8 +302,8 @@ Beyond that, the following are known issues related to the code in this reposito
 
 ---------------
 
-* Anaphora resolution/coreferentiators are not included yet in this code. So it is recommended to not use sentence containing pronoms, otherwise any abductive/deductive operations cannot be successful.
+* Anaphora resolution/coreferentiators are not included yet in this code. So it is recommended to not use sentence containing pronoms, otherwise any abductive/deductive operations won't be successful.
 For this purpose, the integration of tools such as [neuralcoref](https://github.com/huggingface/neuralcoref) is planned. Coders might include such a tool in their own fork of this repository.
 * Sentence containing singles quoation marks (') are still not well managed. So, it is recommended to not use it, and, in such a case, to rephrase utterances differently.
-* Occasional crashes during parsing of text may occur, especially during conversion from natural language into logical forms/definite clauses. In thia case it is recommended rephrasing/reducing utterances.
-* Sometime disambiguation might not work well, due to possible lack of useful examples within related wordnet synsets that must be evaluated for such a purpose. It is planned to integrate additional lexical resources in order to address such a issue.
+* Occasional crashes during parsing of text may occur, especially during conversion from natural language into logical forms/definite clauses. In this case, rephrasing/reducing utterances is recommended.
+* Sometime disambiguation might not work well, due to possible lack of useful examples within related wordnet synsets that must be evaluated. It is planned to integrate additional lexical resources in order to address such an issue.
