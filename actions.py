@@ -870,9 +870,15 @@ class reason(Action):
         if bc_result is not False:
             self.assert_belief(OUT("From HKB (Backward-Chaining): True"))
             self.assert_belief(OUT(str(bc_result)))
+            print("OUTPUT: ", str(bc_result))
+            print("KB: ", str(kb_fol.clauses))
+
             self.assert_belief(ANSWERED("YES"))
         else:
+            print("OUTPUT:", str(bc_result))
+            print("KB: ", str(kb_fol.clauses))
             self.assert_belief(OUT("From HKB (Backward-Chaining): False"))
+            self.assert_belief(ANSWERED("YES"))
 
         # Second attempt using Nested Reasoning (when Backward-chaining result is False)
         if bc_result is False and NESTED_REASONING:

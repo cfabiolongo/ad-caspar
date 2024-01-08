@@ -198,7 +198,8 @@ class Parse(object):
             # check for presence in Grounded Meaning Context (GMC). In this case the choosen synset must be that in GMC, already found
             if GMC_ACTIVE is True and token.tag_ in GMC_POS and token.lemma_ in self.GMC_SUPP:
 
-                offset_dict[token.idx] = token.text + "0" + str(index) + ":" + token.tag_
+                offset_dict[token.idx] = token.text[0].upper() + token.text[1:] + "0" + str(index) + ":" + token.tag_
+                # offset_dict[token.idx] = token.text + "0" + str(index) + ":" + token.tag_
                 shrinked_proper_syn = self.GMC_SUPP[token.lemma_]
                 offset_dict_lemmatized[token.idx] = shrinked_proper_syn + "0" + str(index) + ":" + token.tag_
 
@@ -330,7 +331,8 @@ class Parse(object):
                         print("\n<------------- Getting from LCD: "+shrinked_proper_syn+" ("+lemma+")")
 
                 offset_dict_lemmatized[token.idx] = shrinked_proper_syn + "0" + str(index) + ":" + token.tag_
-                offset_dict[token.idx] = token.text + "0" + str(index) + ":" + token.tag_
+                offset_dict[token.idx] = token.text[0].upper() + token.text[1:] + "0" + str(index) + ":" + token.tag_
+                # offset_dict[token.idx] = token.text + "0" + str(index) + ":" + token.tag_
 
             else:
 
@@ -341,7 +343,8 @@ class Parse(object):
                     lemma = self.LCD[lemma]
                     print("\n<------------- Getting from LCD: ", lemma)
 
-                offset_dict[token.idx] = token.text+"0"+str(index)+":"+token.tag_
+                # offset_dict[token.idx] = token.text+"0"+str(index)+":"+token.tag_
+                offset_dict[token.idx] = token.text[0].upper() + token.text[1:] + "0" + str(index) + ":" + token.tag_
                 offset_dict_lemmatized[token.idx] = lemma+"0"+str(index)+":"+token.tag_
 
             counter[token.text] = index - 1
