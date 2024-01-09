@@ -286,7 +286,7 @@ CONDITIONAL_WORDS (*when*, *if*, *while*, etc.) are those for what we want a log
 
 After a failed attempt using the High KB (From HKB: False), a successful reasoning is achieved (From LKB: True) getting query-relevant clauses from the Low KB with a MIN_CONFIDENCE (Section [LKB] of config.ini) greater than 0.6.
 
-#### Assertion/Inference via shell (outside chatbot)
+### Assertion/Inference via shell (outside chatbot)
 
 The response after assertion/reasoning commands can be simulated outside the chatbot, with the shell command *proc* as follow:
 
