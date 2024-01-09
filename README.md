@@ -20,14 +20,13 @@ This repository has been tested with the following packages versions:
 * Natural Language Toolkit (3.5)
 * python-telegram-bot (12.8)
 * pymongo (3.10.1)
-* flair (0.11.3)
 * pandas (2.1.4)
 
 
 ### Phidias
 
 ---------------
-##### on all platforms
+
 ```sh
 > git clone https://github.com/corradosantoro/phidias
 > pip install -r requirements.txt
@@ -67,15 +66,10 @@ from python console:
 > pip install python-telegram-bot
 ```
 
-### Flair
-
----------------
-
-```sh
-> pip install git+https://github.com/flairNLP/flair
-```
 
 ### pymongo
+
+---------------
 
 ```sh
 > pip install pymongo
@@ -113,7 +107,7 @@ In the case of using a mongoDB container, the latter can be accessed by the link
 
 ```sh
 > pip install pandas
-> ip install openpyxl
+> pip install openpyxl
 ```
 
 
@@ -216,7 +210,6 @@ A syntax for a single input argument X is also available, for instance:
 ```sh
 > feed("Colonel West is American")
 ```
-
 
 
 ### Exporting clauses into excel
