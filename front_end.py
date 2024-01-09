@@ -25,6 +25,9 @@ make_feed() >> [show_line("\nFeeding KBs ended.\n")]
 # Feeding Clauses KB with sentences in FILE_KB_NAME (config.ini)
 feed() >> [show_line("\nFeeding KBs from file....\n"), +WAKE("ON"),  +LISTEN("ON"), feed_kbs(), make_feed()]
 
+# Feeding Clauses KB with sentences X
+feed(X) >> [show_line("\nFeeding KBs from file....\n"), +WAKE("ON"),  +LISTEN("ON"), +TEST(X), make_feed()]
+
 
 # Front-End STT
 
@@ -63,14 +66,13 @@ manage_msg() >> [show_ct(), show_line("\n------------- End of operations.\n"), T
 
 
 # Assertion management (shell)
-proc(X) / check_last_char(X, ".") >> [show_line("\nGot it."), -REASON("ON"), +LISTEN("ON"), parse_rules(X), parse_deps(), feed_mst(), process_mst(), log_cmd("Feed", X)]
+proc(X) / check_last_char(X, ".") >> [show_line("\nGot it."), +WAKE("ON"), -REASON("ON"), +LISTEN("ON"), parse_rules(X), parse_deps(), feed_mst(), process_mst(), log_cmd("Feed", X)]
 # Questions management (shell)
-proc(X) / check_last_char(X, "?") >> [show_line("\nLet me think..."), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason()]
+proc(X) / check_last_char(X, "?") >> [show_line("\nLet me think..."), +WAKE("ON"), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason()]
 # Domotic command management (shell)
 proc(X) >> [show_line("\nDomotic command detected"), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X)]
 # Ending operation (shell)
-proc(X) >> [show_ct(), show_line("\n------------- End of operations.\n")]
-
+proc(X) >> [show_ct(), -WAKE("ON"), show_line("\n------------- End of operations.\n")]
 
 # Give back X as chatbot answer
 +OUT(X) / CHAT_ID(C) >> [Reply(C, X), Timer(W).start()]
