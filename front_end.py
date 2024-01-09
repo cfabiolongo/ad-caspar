@@ -60,19 +60,18 @@ manage_msg() / (MSG(X) & CHAT_ID(C) & check_last_char(X, ".")) >> [Reply(C, "Got
 # Questions management (chatbot)
 manage_msg() / (MSG(X) & CHAT_ID(C) & check_last_char(X, "?")) >> [Reply(C, "Let me think..."), -MSG(X), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason(), manage_msg()]
 # Domotic command management (chatbot)
-manage_msg() / (MSG(X) & CHAT_ID(C)) >> [Reply(C, "Domotic command detected"), -MSG(X), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X), manage_msg()]
+manage_msg() / (MSG(X) & CHAT_ID(C)) >> [Reply(C, "IoT command detected"), -MSG(X), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X), manage_msg()]
 # Ending operation (chatbot)
 manage_msg() >> [show_ct(), show_line("\n------------- End of operations.\n"), Timer(W).start()]
 
 
 # Assertion management (shell)
-proc(X) / check_last_char(X, ".") >> [show_line("\nGot it."), +WAKE("ON"), -REASON("ON"), +LISTEN("ON"), parse_rules(X), parse_deps(), feed_mst(), process_mst(), log_cmd("Feed", X)]
+proc(X) / check_last_char(X, ".") >> [show_line("\nGot it."), +WAKE("ON"), -REASON("ON"), +LISTEN("ON"), parse_rules(X), parse_deps(), feed_mst(), process_mst(), log_cmd("Feed", X), show_ct(), -WAKE("ON"), +LISTEN("ON"), show_line("\n------------- End of operations.\n")]
 # Questions management (shell)
-proc(X) / check_last_char(X, "?") >> [show_line("\nLet me think..."), +WAKE("ON"), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason()]
+proc(X) / check_last_char(X, "?") >> [show_line("\nLet me think..."), +WAKE("ON"), -LISTEN("ON"), +REASON("ON"), +STT(X), log_cmd("Query", X), qreason(), show_ct(), -WAKE("ON"), -REASON("ON"), show_line("\n------------- End of operations.\n")]
 # Domotic command management (shell)
-proc(X) >> [show_line("\nDomotic command detected"), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X)]
-# Ending operation (shell)
-proc(X) >> [show_ct(), -WAKE("ON"), show_line("\n------------- End of operations.\n")]
+proc(X) >> [show_line("\nIoT command detected"), +WAKE("ON"), parse_rules(X), parse_deps(), feed_mst(), process_cmd(), log_cmd("IoT", X), show_ct(), -WAKE("ON"), show_line("\n------------- End of operations.\n")]
+
 
 # Give back X as chatbot answer
 +OUT(X) / CHAT_ID(C) >> [Reply(C, X), Timer(W).start()]
@@ -98,8 +97,8 @@ new_def_clause(M, T) / (WAIT(W) & CHAT_ID(C)) >> [show_line("\n------------- Don
 new_def_clause(M, T) / WAIT(W) >> [show_line("\n------------- Done.\n"), Timer(W).start()]
 
 
-# Domotic Reasoning
-process_cmd() / (WAKE("ON")) >> [show_line("\nProcessing domotic command...\n"), assert_command(), parse_command(), parse_routine()]
+# IoT Reasoning
+process_cmd() / (WAKE("ON")) >> [show_line("\nProcessing IoT command...\n"), assert_command(), parse_command(), parse_routine()]
 
 +TIMEOUT("ON") / (WAKE("ON") & LISTEN("ON") & REASON("ON") & CHAT_ID(C)) >> [show_line("Returning to sleep..."), Reply(C, "Returning to sleep..."), -WAKE("ON"), -LISTEN("ON"), -REASON("ON")]
 +TIMEOUT("ON") / (WAKE("ON") & REASON("ON") & CHAT_ID(C)) >> [show_line("Returning to sleep..."), Reply(C, "Returning to sleep..."), -REASON("ON"), -WAKE("ON")]

@@ -219,6 +219,14 @@ Three examples knowledge base of increasing size are available for testing purpo
 > feed()
 ```
 
+A syntax for a single input argument X is also available, for instance:
+
+```sh
+> feed("Colonel West is American")
+```
+
+
+
 ### Exporting clauses into excel
 
 This prototype gives the change to export Low Clauses KB content (clauses and corresponding sentences) into a excel file whose name must be
@@ -292,6 +300,30 @@ CONDITIONAL_WORDS (*when*, *if*, *while*, etc.) are those for what we want a log
 ![Image 9](https://github.com/fabiuslongo/ad-caspar/blob/master/images/nested4.JPG)
 
 After a failed attempt using the High KB (From HKB: False), a successful reasoning is achieved (From LKB: True) getting query-relevant clauses from the Low KB with a MIN_CONFIDENCE (Section [LKB] of config.ini) greater than 0.6.
+
+#### Assertion/Inference via shell (outside chatbot)
+
+The response after assertion/reasoning commands can be simulated outside the chatbot, with the shell command *proc* as follow:
+
+* Assertions (with final sentence dot)
+
+```sh
+> proc("Colonel West is American.")
+```
+
+* Questions (with final sentence question mark)
+
+```sh
+> proc("Colonel West is American?")
+```
+
+* IoT commands (with nothing at the end of sentence)
+
+```sh
+> proc("turn off the lights in the living room")
+```
+
+
 
 ### Known issues
 
