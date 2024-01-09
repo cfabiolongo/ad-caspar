@@ -33,21 +33,13 @@ This repository has been tested with the following packages versions:
 > pip install -r requirements.txt
 > pip install .
 ```
-##### additional package needed (Linux)
-```sh
-> pip install readline
-```
-##### additional package needed (Windows)
-```sh
-> python -m pip install pyreadline
-```
 
 ### SpaCy
 
 ---------------
 
 ```sh
-> python -m pip install spacy
+> pip install spacy
 > python -m spacy download en_core_web_trf
 ```
 
@@ -58,7 +50,7 @@ This repository has been tested with the following packages versions:
 
 from prompt:
 ```sh
-> python -m pip install nltk
+> pip install nltk
 ```
 from python console:
 ```sh
@@ -72,7 +64,7 @@ from python console:
 ---------------
 
 ```sh
-> python -m pip install python-telegram-bot
+> pip install python-telegram-bot
 ```
 
 ### Flair
@@ -86,7 +78,7 @@ from python console:
 ### pymongo
 
 ```sh
-> python -m pip install pymongo
+> pip install pymongo
 ```
 
 ### MongoDB
@@ -120,8 +112,8 @@ In the case of using a mongoDB container, the latter can be accessed by the link
 
 
 ```sh
-> python -m pip install pandas
-> python -m pip install openpyxl
+> pip install pandas
+> ip install openpyxl
 ```
 
 
