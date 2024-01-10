@@ -23,7 +23,6 @@ GMC_POS = config.get('GROUNDED_MEANING_CONTEXT', 'GMC_POS').split(", ")
 OBJ_JJ_TO_NOUN = config.getboolean('POS', 'OBJ_JJ_TO_NOUN')
 
 
-
 class Parse(object):
     def __init__(self, VERBOSE):
 
@@ -37,7 +36,7 @@ class Parse(object):
         print("\nNLP engine initializing. Please wait...")
 
         # python -m spacy download en_core_web_lg
-        self.nlp = spacy.load('en_core_web_trf')
+        self.nlp = spacy.load('en_core_web_lg')
 
         if platform.system() == "Windows":
             os.system('cls')
@@ -195,7 +194,7 @@ class Parse(object):
 
             print("\nlemma in exam: ", token.lemma_)
 
-            # check for presence in Grounded Meaning Context (GMC). In this case the choosen synset must be that in GMC, already found
+            # check for presence in Grounded Meaning Context (GMC). In this case the choosen label must be that in GMC, already found
             if GMC_ACTIVE is True and token.tag_ in GMC_POS and token.lemma_ in self.GMC_SUPP:
 
                 offset_dict[token.idx] = token.text[0].upper() + token.text[1:] + "0" + str(index) + ":" + token.tag_
@@ -418,7 +417,6 @@ class Parse(object):
         for chunk in chunk_list:
             sw = sw + chunk
         return sw
-
 
 
 def main():
