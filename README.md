@@ -8,7 +8,7 @@ This architecture inherits all the features of his predecessor [CASPAR](https://
  two-level Clauses Knowledge Base, an abductive inference as pre-phase of deduction, and a Telegram
 chatbot prototype implementing Question Answering tecniques for Polar and Wh-Questions. Such chatbot can have both goal-oriented and conversational features.
 
-![Image 1](https://github.com/fabiuslongo/ad-caspar/blob/master/images/AD-Caspar.jpg)
+![Image 1](https://github.com/cfabiolongo/ad-caspar/blob/master/images/AD-Caspar.jpg)
 
 # Installation
 
@@ -176,7 +176,7 @@ eShell: main >
 to start a session you have to go to the telegram bot window and type the word "hello". Assertions must end with 
 "." and questions must end with "?". Otherwise the utterances will be processed as direct commands or routines (check out the page of [CASPAR](https://github.com/fabiuslongo/pycaspar) for details).
 
-![Image 2](https://github.com/fabiuslongo/ad-caspar/blob/master/images/start-assertion.JPG)
+![Image 2](https://github.com/cfabiolongo/ad-caspar/blob/master/images/start-assertion.JPG)
 
 After such interaction with the telegram bot, the two layers of the Clauses KB will be as it follows:
 
@@ -227,7 +227,7 @@ set in FILE_EXPORT_LKB_NAME (AGENT section), with the command *expt()* given in 
 A detailed overview of how the wh-questions are treated is provided [here](https://github.com/fabiuslongo/ad-caspar/blob/master/wquestions.md).
 In the following picture are shown two different kind of query with wh-questions: 
 
-![Image 3](https://github.com/fabiuslongo/ad-caspar/blob/master/images/query1.JPG)
+![Image 3](https://github.com/cfabiolongo/ad-caspar/blob/master/images/query1.JPG)
 
 This prototype give back as result a substitutions containing the literal as
 logical representation of the snipplet-result of the query. After a bot reboot, as we can see in the following picture, the result will be slightly different because the High Clauses KB
@@ -236,18 +236,18 @@ Such a confidence level, depending of the domain can be changed by modifying the
 thats because the content of the High KB is preserved during the session, otherwise it can be emptied after a query by changing the value of
 EMPTY_HKB_AFTER_REASONING (LKB Section) in config.ini.
 
-![Image 4](https://github.com/fabiuslongo/ad-caspar/blob/master/images/query2.JPG)
+![Image 4](https://github.com/cfabiolongo/ad-caspar/blob/master/images/query2.JPG)
 
 By changing the values of SHOW_REL (QA Section) in config.ini, it can be possible to show the clauses involved in the abduction pre-inference, together with their confidences.
 
-![Image 5](https://github.com/fabiuslongo/ad-caspar/blob/master/images/query3.JPG)
+![Image 5](https://github.com/cfabiolongo/ad-caspar/blob/master/images/query3.JPG)
 
 ### Failing queries
 
 In the bot closed world assumption, the agent can give back only answers related to its onw knowledge, otherwise it will return _False_.
 Optionally, with the value of SHOW_REL set to _true_, the closest results can be shown together with their confidence level: 
 
-![Image 5](https://github.com/fabiuslongo/ad-caspar/blob/master/images/query4.JPG)
+![Image 5](https://github.com/cfabiolongo/ad-caspar/blob/master/images/query4.JPG)
 
 ### Nested Reasoning
 
