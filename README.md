@@ -224,7 +224,7 @@ set in FILE_EXPORT_LKB_NAME (AGENT section), with the command *expt()* given in 
 
 ### Querying the bot
 
-A detailed overview of how the wh-questions are treated is provided [here](https://github.com/fabiuslongo/ad-caspar/blob/master/wquestions.md).
+A detailed overview of how the wh-questions are treated is provided [here](https://github.com/cfabiolongo/ad-caspar/blob/master/wquestions.md).
 In the following picture are shown two different kind of query with wh-questions: 
 
 ![Image 3](https://github.com/cfabiolongo/ad-caspar/blob/master/images/query1.JPG)
